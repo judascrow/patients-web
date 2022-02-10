@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+<!-- Navbar content -->
+{% block navbar-content %}
+<i class="fas fa-stethoscope"></i>&nbsp;&nbsp; Login
+<!---->
+{% endblock navbar-content %}
+
+<!-- Button on navbar -->
+{% block nav-btn %}
+<a
+  href="{% url 'frontend' %}"
+  class="btn btn-outline-primary border-light text-light btn-sm"
+  id="btn-nav"
+  >Go back</a
+>
+{% endblock nav-btn %}
+
+<!-- CONTENT PAGE -->
+{% block content %}
+<div class="container mt-5">
+  <div class="card p-3 border-dark">
+    <a class="btn btn-outline-dark mt-3"
+      ><i class="fas fa-lock"></i>&nbsp;&nbsp; RESTRICTED ACCESS</a
+    >
+    <form method="post" autocomplete="off" novalidate>
+      {% csrf_token %}
+      <div class="input-group mb-3 mt-5">
+        <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          placeholder="Username"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Password"
+        />
+      </div>
+
+      <input
+        class="btn btn-primary btn-sm mt-4 mb-3"
+        type="submit"
+        value="Enter"
+      />
+    </form>
+  </div>
+</div>
+{% endblock content %}

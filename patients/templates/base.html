@@ -35,24 +35,27 @@
         <nav class="navbar navbar-expand-ld navbar-dark bg-dark">
           <div class="col-sm">
             <a
-              href=""
               class="navbar-brand flex-grow-1"
               style="text-align: center; color: #fff; margin-left: 25px"
-              ><i class="fas fa-briefcase-medical"></i>&nbsp;&nbsp; Judas
-              Hospital</a
             >
+              {% block navbar-content %}<i class="fas fa-briefcase-medical"></i
+              >&nbsp;&nbsp; Judas Hospital{% endblock navbar-content %}
+            </a>
           </div>
 
           <div class="col-sm">
-            <a
-              href="#"
+            {% block nav-btn %}<a
+              href="{% url 'backend' %}"
               class="btn btn-outline-info border-light btn-sm"
               id="btn-nav"
               >Login</a
-            >
+            >{% endblock nav-btn %}
           </div>
         </nav>
       </header>
+
+      <!-- =================== Block content (from other pages) denied here =================== -->
+      {% block content %}{% endblock content %}
     </div>
     <!-- END // wrapper -->
 

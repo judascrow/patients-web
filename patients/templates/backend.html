@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+<!-- Navbar content -->
+{% block navbar-content %}
+<i class="fas fa-briefcase-medical"></i>&nbsp;&nbsp; Patients
+<!---->
+{% endblock navbar-content %}
+
+<!-- Button on navbar -->
+{% block nav-btn %}
+<a
+  href="{% url 'logout' %}"
+  class="btn btn-outline-danger border-light text-light btn-sm"
+  id="btn-nav"
+  >Logout</a
+>
+{% endblock nav-btn %}
+
+<!-- CONTENT PAGE -->
+{% block content %}
+<h1 class="text-center text-success">Backend page</h1>
+{% endblock content %}
