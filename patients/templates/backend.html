@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+<!-- Title on tab browser -->
+{% block title %} All Patients {% endblock title %}
+
 <!-- Navbar content -->
 {% block navbar-content %}
 <i class="fas fa-briefcase-medical"></i>&nbsp;&nbsp; Patients
@@ -19,4 +22,13 @@
 <!-- CONTENT PAGE -->
 {% block content %}
 <h1 class="text-center text-success">Backend page</h1>
+<br />
+<center>
+  <a
+    href="{% url 'add_patient' %}"
+    class="btn btn-primary btn-sm"
+    style="width: 200px"
+    >Add patient</a
+  >
+</center>
 {% endblock content %}

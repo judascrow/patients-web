@@ -30,3 +30,10 @@ body {
   height: 50px;
   font-size: 13px;
 }
+
+/* ---------------------------------
+# PATIENT (add.html)
+--------------------------------- */
+.side-label {
+  width: 80px;
+}

@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.contrib import admin
 from django.urls import path, include
 from patients import views
@@ -13,5 +14,8 @@ urlpatterns = [
     # ===============
     # BACKEND SECTION
     # ===============
-    path('backend/', views.backend, name='backend')
+    # Path to access the backend page
+    path('backend/', views.backend, name='backend'),
+    # Path to add patient
+    path('add_patient', views.add_patient, name='add_patient')
 ]
