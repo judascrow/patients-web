@@ -34,13 +34,12 @@ def backend(request):
         "patients": all_patient
     })
 
+
 # Fuction to insert patient
-
-
 @login_required(login_url="login")
 def add_patient(request):
     if request.method == "POST":
-        if request.POST.get('name') and request.POST.get('phone') and request.POST.get('email') and request.POST.get('age') and request.POST.get('gender') and request.POST.get('note'):
+        if request.POST.get('name') and request.POST.get('phone') and request.POST.get('email') and request.POST.get('age') and request.POST.get('gender') or request.POST.get('note'):
             patient = Patient()
             patient.name = request.POST.get('name')
             patient.phone = request.POST.get('phone')
@@ -53,3 +52,12 @@ def add_patient(request):
             return HttpResponseRedirect('/backend')
     else:
         return render(request, "add.html")
+
+
+# Fuction to delete patient
+@login_required(login_url="login")
+def delete_patient(request, patient_id):
+    patient = Patient.objects.get(id=patient_id)
+    patient.delete()
+    messages.success(request, "Patient removed successfully!")
+    return HttpResponseRedirect('/backend')

@@ -37,7 +37,8 @@
         name="q"
         type="text"
         class="form-control"
-        placeholder="Search for"
+        placeholder="Search for..."
+        value="{{ request.GET.q }}"
       />
       <button class="btn btn-secondary"><i class="fas fa-search"></i></button>
       <a
@@ -56,13 +57,13 @@
     >
       <thead class="table-secondary">
         <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th>Age</th>
-          <th>Gender</th>
-          <th>Registered</th>
-          <th>Action</th>
+          <th style="width: 20%">Name</th>
+          <th style="width: 15%">Phone</th>
+          <th style="width: 20%">Email</th>
+          <th style="width: 10%">Age</th>
+          <th style="width: 5%">Gender</th>
+          <th style="width: 20%">Registered</th>
+          <th style="width: 10%" colspan="2">Actions</th>
         </tr>
       </thead>
       <!-- DATA FROM BACKEMD -->
@@ -74,6 +75,19 @@
         <td>{{ patient.age }}</td>
         <td>{{ patient.gender }}</td>
         <td>{{ patient.created_at | date:'m/d/Y (H:i)' }}</td>
+        <td>
+          <a href="#" class="btn btn-primary" title="Edit Patient"
+            ><i class="fas fa-pen"></i
+          ></a>
+        </td>
+        <td>
+          <a
+            href="/delete_patient/{{ patient.id }}"
+            class="btn btn-secondary"
+            title="Delete Patient"
+            ><i class="fas fa-trash-alt"></i
+          ></a>
+        </td>
       </tr>
       {% endfor %}
     </table>
@@ -135,6 +149,15 @@
     </ul>
     {% endif %}
   </nav>
+
+  <!-- Messages from backend -->
+  {% for message in messages %} {% if message.tags == 'success' %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    var m = "{{ message }}";
+    swal("Perfect !", m, "success");
+  </script>
+  {% endif %} {% endfor %}
 </div>
 
 {% endblock content %}

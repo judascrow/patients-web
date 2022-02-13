@@ -17,5 +17,8 @@ urlpatterns = [
     # Path to access the backend page
     path('backend/', views.backend, name='backend'),
     # Path to add patient
-    path('add_patient', views.add_patient, name='add_patient')
+    path('add_patient', views.add_patient, name='add_patient'),
+    # Path to delete patient
+    path('delete_patient/<str:patient_id>',
+         views.delete_patient, name='delete_patient')
 ]
