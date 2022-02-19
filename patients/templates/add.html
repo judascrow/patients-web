@@ -25,8 +25,14 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <div class="card card-body border-dark text-primary mt-5">
-        <span class="text-center">FILL OUT THE FROM BELOW</span>
+      <div class="card card-body border-dark mt-5">
+        <span class="text-center">
+          {% block card-title %}
+          <span class="text-primary">
+          FILL OUT THE FROM BELOW
+          </span>
+          {% endblock card-title %}
+        </span>
       </div>
 
       <!-- Form -->
@@ -46,6 +52,8 @@
             name="name"
             placeholder="Patient name"
             required
+            {% block Value-name  %} 
+            {% endblock Value-name %}
           />
         </div>
         <div class="input-group input-group-sm mb-3">
@@ -56,6 +64,8 @@
             name="phone"
             placeholder="Patient phone"
             required
+            {% block Value-phone  %} 
+            {% endblock Value-phone %}
           />
         </div>
         <div class="input-group input-group-sm mb-3">
@@ -66,6 +76,8 @@
             name="email"
             placeholder="Patient email"
             required
+            {% block Value-email  %} 
+            {% endblock Value-email %}
           />
         </div>
         <div class="input-group input-group-sm mb-3">
@@ -76,12 +88,22 @@
             name="age"
             placeholder="Patient age"
             required
+            {% block Value-age  %} 
+            {% endblock Value-age %}
           />
         </div>
         <div class="input-group input-group-sm mb-3">
           <span class="input-group-text side-label">Gender</span>
-          <select class="form-select" name="gender" required>
+          <select 
+            class="form-select" 
+            name="gender" 
+            required             
+            {% block Value-gender  %} 
+            {% endblock Value-gender %}
+          >
+            {% block option %}
             <option value="" hidden>Select the gender</option>
+            {% endblock option %}
             <option disabled></option>
             <option>M</option>
             <option>F</option>
@@ -94,7 +116,7 @@
             name="note"
             rows="7"
             placeholder="Description is optional..."
-          ></textarea>
+          >{% block Value-note  %}{% endblock Value-note %}</textarea>
         </div>
 
         <div class="d-grid gap-2 mt-3">

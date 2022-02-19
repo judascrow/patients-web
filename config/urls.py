@@ -20,5 +20,8 @@ urlpatterns = [
     path('add_patient', views.add_patient, name='add_patient'),
     # Path to delete patient
     path('delete_patient/<str:patient_id>',
-         views.delete_patient, name='delete_patient')
+         views.delete_patient, name='delete_patient'),
+    # Path to access the patient individually
+    path('patient/<str:patient_id>',
+         views.patient, name='patient'),
 ]
