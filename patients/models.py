@@ -14,7 +14,7 @@ class Patient(models.Model):
     email = models.CharField(max_length=100)
     age = models.CharField(max_length=100)
     gender = models.CharField(max_length=100, null=True, choices=GENDER)
-    note = models.TextField()
+    note = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

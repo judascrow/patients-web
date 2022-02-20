@@ -1,5 +1,3 @@
-import imp
-from unicodedata import name
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from patients.models import Patient
@@ -35,11 +33,16 @@ def backend(request):
     })
 
 
-# Fuction to insert patient
+# Fuction to Add patient
 @login_required(login_url="login")
 def add_patient(request):
     if request.method == "POST":
-        if request.POST.get('name') and request.POST.get('phone') and request.POST.get('email') and request.POST.get('age') and request.POST.get('gender') or request.POST.get('note'):
+        if request.POST.get('name') \
+                and request.POST.get('phone') \
+                and request.POST.get('email') \
+                and request.POST.get('age') \
+                and request.POST.get('gender') \
+                or request.POST.get('note'):
             patient = Patient()
             patient.name = request.POST.get('name')
             patient.phone = request.POST.get('phone')
@@ -69,3 +72,21 @@ def patient(request, patient_id):
     patient = Patient.objects.get(id=patient_id)
     if patient != None:
         return render(request, "edit.html", {'patient': patient})
+
+
+# Fuction to edit the patients
+@login_required(login_url="login")
+def edit_patient(request):
+    if request.method == "POST":
+        patient = Patient.objects.get(id = request.POST.get('id'))
+        if patient != None:
+
+            patient.name = request.POST.get('name')
+            patient.phone = request.POST.get('phone')
+            patient.email = request.POST.get('email')
+            patient.age = request.POST.get('age')
+            patient.gender = request.POST.get('gender')
+            patient.note = request.POST.get('note')
+            patient.save()
+            messages.success(request, "Patient updated successfully!")
+            return HttpResponseRedirect('/backend')
